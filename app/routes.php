@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::resource('user', 'UsersController', array(
+    'except' => array('create', 'edit'),
+));

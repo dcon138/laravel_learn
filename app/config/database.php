@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_ENV['DATABASE_HOSTNAME']) || !isset($_ENV['DATABASE_NAME']) || !isset($_ENV['DATABASE_USERNAME']) || !isset($_ENV['DATABASE_PASSWORD'])) {
+    throw new Exception('Error: please configure database connection information in .env.<environment>.php');
+}
+
 return array(
 
 	/*
@@ -45,44 +49,7 @@ return array(
 	*/
 
 	'connections' => array(
-
-		'sqlite' => array(
-			'driver'   => 'sqlite',
-			'database' => __DIR__.'/../database/production.sqlite',
-			'prefix'   => '',
-		),
-
-		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'forge',
-			'username'  => 'forge',
-			'password'  => '',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-		),
-
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'forge',
-			'username' => 'forge',
-			'password' => '',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
-		),
-
-		'sqlsrv' => array(
-			'driver'   => 'sqlsrv',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
-			'prefix'   => '',
-		),
-
+            //connections should be defined on a per-environment basis.
 	),
 
 	/*
